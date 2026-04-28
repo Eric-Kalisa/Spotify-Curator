@@ -1,0 +1,52 @@
+2026-04-27 23:32:12,543 - INFO - Found credentials in environment variables.
+2026-04-27 23:32:19,636 - INFO - User authentication requires interaction with your web browser. Once you enter your credentials and give authorization, you will be redirected to a url.  Paste that url you were directed to to complete the authorization.
+2026-04-27 23:32:19,697 - INFO - Opened https://accounts.spotify.com/authorize?client_id=ab572d27ef1e4ca1ac6eb436800df693&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A8888%2Fcallback&scope=user-read-recently-played+user-library-read+user-top-read+playlist-read-private+playlist-modify-public+playlist-modify-private in your browser
+2026-04-27 23:32:27,032 - INFO - Fetched 50 recently played tracks
+2026-04-27 23:32:32,764 - INFO - Bedrock estimated audio features for 9 tracks
+2026-04-27 23:32:34,042 - INFO - Fetched metadata for 6 artists
+2026-04-27 23:32:34,042 - INFO - Assembled 9 unique track records
+2026-04-27 23:32:34,043 - INFO - Pipeline setup: 10 raw tracks -> 9 assembled records
+2026-04-27 23:32:34,045 - INFO - TEST 1.1: Raw track count
+2026-04-27 23:32:34,046 - INFO - TEST 1.1 PASSED: 10 raw tracks
+2026-04-27 23:32:34,046 - INFO - TEST 1.2: Raw track field validation
+2026-04-27 23:32:34,046 - INFO - TEST 1.2 PASSED
+2026-04-27 23:32:34,048 - INFO - TEST 2.1: Assembly output count
+2026-04-27 23:32:34,048 - INFO - TEST 2.1 PASSED: 9 records
+2026-04-27 23:32:34,048 - INFO - TEST 2.2: Checking for duplicate track_ids
+2026-04-27 23:32:34,049 - INFO - TEST 2.2 PASSED: no duplicates
+2026-04-27 23:32:34,050 - INFO - TEST 2.3: Identifier fields
+2026-04-27 23:32:34,050 - INFO - TEST 2.3 PASSED
+2026-04-27 23:32:34,051 - INFO - TEST 2.4: Audio feature keys
+2026-04-27 23:32:34,051 - INFO - TEST 2.4 PASSED
+2026-04-27 23:32:34,052 - INFO - TEST 2.5: Audio feature ranges
+2026-04-27 23:32:34,053 - INFO - TEST 2.5 PASSED
+2026-04-27 23:32:34,054 - INFO - TEST 2.6: Track metadata fields
+2026-04-27 23:32:34,054 - INFO - TEST 2.6 PASSED
+2026-04-27 23:32:34,054 - INFO - TEST 2.7: artist_genres type
+2026-04-27 23:32:34,055 - INFO - TEST 2.7 PASSED
+2026-04-27 23:32:34,055 - INFO - TEST 2.8: Full feature engineering pipeline
+2026-04-27 23:32:34,083 - INFO - TEST 2.8 PASSED: feature matrix shape (9, 14), genre cols: 0
+2026-04-27 23:32:34,088 - INFO - Test run complete: 10/10 passed
+2026-04-28 11:52:08,241 - INFO - Found credentials in environment variables.
+2026-04-28 11:52:22,833 - INFO - Fetched 50 recently played tracks
+2026-04-28 11:52:29,526 - INFO - Bedrock estimated audio features for 10 tracks
+2026-04-28 11:52:31,261 - INFO - Bedrock estimated genres for 8 artists
+2026-04-28 11:52:31,261 - INFO - Assembled 10 unique track records
+2026-04-28 11:52:31,261 - INFO - Pipeline setup: 10 raw tracks -> 10 assembled records
+2026-04-28 11:52:31,262 - INFO - TEST 1.1: Raw track field validation
+2026-04-28 11:52:31,262 - INFO - TEST 1.1 PASSED
+2026-04-28 11:52:31,263 - INFO - TEST 2.1: Assembly output count
+2026-04-28 11:52:31,263 - INFO - TEST 2.1 PASSED: 10 records
+2026-04-28 11:52:31,263 - INFO - TEST 2.2: Checking for duplicate track_ids
+2026-04-28 11:52:31,263 - INFO - TEST 2.2 PASSED: no duplicates
+2026-04-28 11:52:31,264 - INFO - TEST 2.3: Identifier fields
+2026-04-28 11:52:31,264 - INFO - TEST 2.3 PASSED
+2026-04-28 11:52:31,265 - INFO - TEST 2.4: Required audio features non-null after assembly
+2026-04-28 11:52:31,265 - INFO - TEST 2.4 PASSED
+2026-04-28 11:52:31,265 - INFO - TEST 2.5: Track metadata fields
+2026-04-28 11:52:31,265 - INFO - TEST 2.5 PASSED
+2026-04-28 11:52:31,266 - INFO - TEST 2.6: artist_genres type
+2026-04-28 11:52:31,266 - INFO - TEST 2.6 PASSED
+2026-04-28 11:52:31,266 - INFO - TEST 2.7: Full feature engineering pipeline
+2026-04-28 11:52:31,366 - INFO - TEST 2.7 PASSED: feature matrix shape (10, 17), genre cols: 3
+2026-04-28 11:52:31,366 - INFO - Test run complete: 8/8 passed

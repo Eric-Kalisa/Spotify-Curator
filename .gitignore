@@ -1,0 +1,30 @@
+# Secrets & credentials
+.env
+.env.*
+*.pem
+*.key
+
+# Spotify cache
+.spotify_cache
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Logs
+*.log
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

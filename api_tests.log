@@ -1,0 +1,294 @@
+2026-04-27 12:36:14,721 - INFO - TEST 1.1: Checking env credentials
+2026-04-27 12:36:14,721 - INFO - TEST 1.1 PASSED: All credentials present and redirect URI is valid
+2026-04-27 12:36:14,722 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-27 12:36:14,725 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-27 12:36:14,725 - INFO - TEST 1.3 PASSED: Spotify client object created
+2026-04-27 12:36:14,726 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-27 12:36:14,726 - INFO - User authentication requires interaction with your web browser. Once you enter your credentials and give authorization, you will be redirected to a url.  Paste that url you were directed to to complete the authorization.
+2026-04-27 12:36:14,982 - INFO - Opened https://accounts.spotify.com/authorize?client_id=ab572d27ef1e4ca1ac6eb436800df693&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A8888%2Fcallback&scope=user-read-recently-played+user-library-read+user-top-read+playlist-read-private in your browser
+2026-04-27 12:36:26,726 - INFO - TEST 1.4 PASSED: Connected as 'Eric' (id=3173zmpalewv7gxqf4girbovytci)
+2026-04-27 12:36:26,728 - INFO - TEST 1.5: Checking token scopes
+2026-04-27 12:36:26,729 - INFO - TEST 1.5 PASSED: All required scopes granted
+2026-04-27 12:36:26,749 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-27 12:36:27,028 - INFO - TEST 2.1 PASSED: 10 recently played tracks returned
+2026-04-27 12:36:27,029 - INFO - TEST 2.2: Fetching liked songs
+2026-04-27 12:36:27,235 - ERROR - TEST 2.2 FAILED: 'popularity' not found in {'album': {'album_type': 'single', 'artists': [{'external_urls': {'spotify': 'https://open.spotify.com/artist/2keT7cqT2gNfx3dYRKxvA1'}, 'href': 'https://api.spotify.com/v1/artists/2keT7cqT2gNfx3dYRKxvA1', 'id': '2keT7cqT2gNfx3dYRKxvA1', 'name': 'SIJI.', 'type': 'artist', 'uri': 'spotify:artist:2keT7cqT2gNfx3dYRKxvA1'}], 'external_urls': {'spotify': 'https://open.spotify.com/album/06Bd3PbkdYUKo1Yq8Kihem'}, 'href': 'https://api.spotify.com/v1/albums/06Bd3PbkdYUKo1Yq8Kihem', 'id': '06Bd3PbkdYUKo1Yq8Kihem', 'images': [{'height': 640, 'width': 640, 'url': 'https://i.scdn.co/image/ab67616d0000b27375cd2d0caa952ff8d620cf92'}, {'height': 300, 'width': 300, 'url': 'https://i.scdn.co/image/ab67616d00001e0275cd2d0caa952ff8d620cf92'}, {'height': 64, 'width': 64, 'url': 'https://i.scdn.co/image/ab67616d0000485175cd2d0caa952ff8d620cf92'}], 'is_playable': True, 'name': 'KOMSA', 'release_date': '2025-07-30', 'release_date_precision': 'day', 'total_tracks': 1, 'type': 'album', 'uri': 'spotify:album:06Bd3PbkdYUKo1Yq8Kihem'}, 'artists': [{'external_urls': {'spotify': 'https://open.spotify.com/artist/2keT7cqT2gNfx3dYRKxvA1'}, 'href': 'https://api.spotify.com/v1/artists/2keT7cqT2gNfx3dYRKxvA1', 'id': '2keT7cqT2gNfx3dYRKxvA1', 'name': 'SIJI.', 'type': 'artist', 'uri': 'spotify:artist:2keT7cqT2gNfx3dYRKxvA1'}], 'disc_number': 1, 'duration_ms': 156389, 'explicit': False, 'external_ids': {'isrc': 'QZWFL2537838'}, 'external_urls': {'spotify': 'https://open.spotify.com/track/6ne2GugWBHHMbnziQdVGgX'}, 'href': 'https://api.spotify.com/v1/tracks/6ne2GugWBHHMbnziQdVGgX', 'id': '6ne2GugWBHHMbnziQdVGgX', 'is_local': False, 'is_playable': True, 'name': 'KOMSA', 'track_number': 1, 'type': 'track', 'uri': 'spotify:track:6ne2GugWBHHMbnziQdVGgX'} : Track missing 'popularity'
+2026-04-27 12:36:27,239 - INFO - TEST 2.3: Fetching top tracks across all time ranges
+2026-04-27 12:36:27,475 - INFO - TEST 2.3 PASSED [short_term]: 10 tracks
+2026-04-27 12:36:27,848 - INFO - TEST 2.3 PASSED [medium_term]: 10 tracks
+2026-04-27 12:36:28,155 - INFO - TEST 2.3 PASSED [long_term]: 10 tracks
+2026-04-27 12:36:28,258 - INFO - TEST 2.4: Fetching audio features
+2026-04-27 12:36:28,358 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b with Params: {} returned 403 due to None
+2026-04-27 12:36:28,359 - ERROR - TEST 2.4 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b:
+ None, reason: None
+2026-04-27 12:36:28,395 - INFO - TEST 2.5: Fetching artist genre tags
+2026-04-27 12:36:28,564 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb with Params: {} returned 403 due to Forbidden
+2026-04-27 12:36:28,564 - ERROR - TEST 2.5 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb:
+ Forbidden, reason: None
+2026-04-27 12:36:28,599 - INFO - TEST 2.6: Fetching user top artists with genres
+2026-04-27 12:36:28,867 - ERROR - TEST 2.6 FAILED: 'genres' not found in {'external_urls': {'spotify': 'https://open.spotify.com/artist/2uxhKBl696bCNHmtO9rnWc'}, 'href': 'https://api.spotify.com/v1/artists/2uxhKBl696bCNHmtO9rnWc', 'id': '2uxhKBl696bCNHmtO9rnWc', 'images': [{'height': 1000, 'url': 'https://i.scdn.co/image/ab6772690000c46ca248bcf9b941ea77136985a6', 'width': 1000}, {'height': 640, 'url': 'https://i.scdn.co/image/ab6772690000dd22a248bcf9b941ea77136985a6', 'width': 640}, {'height': 200, 'url': 'https://i.scdn.co/image/ab6772690000bac3a248bcf9b941ea77136985a6', 'width': 200}, {'height': 64, 'url': 'https://i.scdn.co/image/ab67726900008f74a248bcf9b941ea77136985a6', 'width': 64}], 'name': "Oliver N'Goma", 'type': 'artist', 'uri': 'spotify:artist:2uxhKBl696bCNHmtO9rnWc'} : Artist missing 'genres'
+2026-04-27 12:36:28,870 - INFO - TEST 2.7: Batch audio features for multiple tracks
+2026-04-27 12:36:29,078 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V with Params: {} returned 403 due to None
+2026-04-27 12:36:29,078 - ERROR - TEST 2.7 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V:
+ None, reason: None
+2026-04-27 12:36:29,155 - INFO - Test run complete: 6/12 passed
+2026-04-27 12:37:08,945 - INFO - TEST 1.1: Checking env credentials
+2026-04-27 12:37:08,946 - INFO - TEST 1.1 PASSED: All credentials present and redirect URI is valid
+2026-04-27 12:37:08,947 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-27 12:37:08,959 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-27 12:37:08,959 - INFO - TEST 1.3 PASSED: Spotify client object created
+2026-04-27 12:37:08,971 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-27 12:37:09,583 - INFO - TEST 1.4 PASSED: Connected as 'Eric' (id=3173zmpalewv7gxqf4girbovytci)
+2026-04-27 12:37:09,585 - INFO - TEST 1.5: Checking token scopes
+2026-04-27 12:37:09,585 - INFO - TEST 1.5 PASSED: All required scopes granted
+2026-04-27 12:37:09,587 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-27 12:37:09,831 - INFO - TEST 2.1 PASSED: 10 recently played tracks returned
+2026-04-27 12:37:09,833 - INFO - TEST 2.2: Fetching liked songs
+2026-04-27 12:37:09,983 - ERROR - TEST 2.2 FAILED: 'popularity' not found in {'album': {'album_type': 'single', 'artists': [{'external_urls': {'spotify': 'https://open.spotify.com/artist/2keT7cqT2gNfx3dYRKxvA1'}, 'href': 'https://api.spotify.com/v1/artists/2keT7cqT2gNfx3dYRKxvA1', 'id': '2keT7cqT2gNfx3dYRKxvA1', 'name': 'SIJI.', 'type': 'artist', 'uri': 'spotify:artist:2keT7cqT2gNfx3dYRKxvA1'}], 'external_urls': {'spotify': 'https://open.spotify.com/album/06Bd3PbkdYUKo1Yq8Kihem'}, 'href': 'https://api.spotify.com/v1/albums/06Bd3PbkdYUKo1Yq8Kihem', 'id': '06Bd3PbkdYUKo1Yq8Kihem', 'images': [{'height': 640, 'width': 640, 'url': 'https://i.scdn.co/image/ab67616d0000b27375cd2d0caa952ff8d620cf92'}, {'height': 300, 'width': 300, 'url': 'https://i.scdn.co/image/ab67616d00001e0275cd2d0caa952ff8d620cf92'}, {'height': 64, 'width': 64, 'url': 'https://i.scdn.co/image/ab67616d0000485175cd2d0caa952ff8d620cf92'}], 'is_playable': True, 'name': 'KOMSA', 'release_date': '2025-07-30', 'release_date_precision': 'day', 'total_tracks': 1, 'type': 'album', 'uri': 'spotify:album:06Bd3PbkdYUKo1Yq8Kihem'}, 'artists': [{'external_urls': {'spotify': 'https://open.spotify.com/artist/2keT7cqT2gNfx3dYRKxvA1'}, 'href': 'https://api.spotify.com/v1/artists/2keT7cqT2gNfx3dYRKxvA1', 'id': '2keT7cqT2gNfx3dYRKxvA1', 'name': 'SIJI.', 'type': 'artist', 'uri': 'spotify:artist:2keT7cqT2gNfx3dYRKxvA1'}], 'disc_number': 1, 'duration_ms': 156389, 'explicit': False, 'external_ids': {'isrc': 'QZWFL2537838'}, 'external_urls': {'spotify': 'https://open.spotify.com/track/6ne2GugWBHHMbnziQdVGgX'}, 'href': 'https://api.spotify.com/v1/tracks/6ne2GugWBHHMbnziQdVGgX', 'id': '6ne2GugWBHHMbnziQdVGgX', 'is_local': False, 'is_playable': True, 'name': 'KOMSA', 'track_number': 1, 'type': 'track', 'uri': 'spotify:track:6ne2GugWBHHMbnziQdVGgX'} : Track missing 'popularity'
+2026-04-27 12:37:09,985 - INFO - TEST 2.3: Fetching top tracks across all time ranges
+2026-04-27 12:37:10,143 - INFO - TEST 2.3 PASSED [short_term]: 10 tracks
+2026-04-27 12:37:10,461 - INFO - TEST 2.3 PASSED [medium_term]: 10 tracks
+2026-04-27 12:37:10,754 - INFO - TEST 2.3 PASSED [long_term]: 10 tracks
+2026-04-27 12:37:10,856 - INFO - TEST 2.4: Fetching audio features
+2026-04-27 12:37:11,061 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b with Params: {} returned 403 due to None
+2026-04-27 12:37:11,061 - ERROR - TEST 2.4 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b:
+ None, reason: None
+2026-04-27 12:37:11,068 - INFO - TEST 2.5: Fetching artist genre tags
+2026-04-27 12:37:11,176 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb with Params: {} returned 403 due to Forbidden
+2026-04-27 12:37:11,176 - ERROR - TEST 2.5 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb:
+ Forbidden, reason: None
+2026-04-27 12:37:11,181 - INFO - TEST 2.6: Fetching user top artists with genres
+2026-04-27 12:37:11,368 - ERROR - TEST 2.6 FAILED: 'genres' not found in {'external_urls': {'spotify': 'https://open.spotify.com/artist/2uxhKBl696bCNHmtO9rnWc'}, 'href': 'https://api.spotify.com/v1/artists/2uxhKBl696bCNHmtO9rnWc', 'id': '2uxhKBl696bCNHmtO9rnWc', 'images': [{'height': 1000, 'url': 'https://i.scdn.co/image/ab6772690000c46ca248bcf9b941ea77136985a6', 'width': 1000}, {'height': 640, 'url': 'https://i.scdn.co/image/ab6772690000dd22a248bcf9b941ea77136985a6', 'width': 640}, {'height': 200, 'url': 'https://i.scdn.co/image/ab6772690000bac3a248bcf9b941ea77136985a6', 'width': 200}, {'height': 64, 'url': 'https://i.scdn.co/image/ab67726900008f74a248bcf9b941ea77136985a6', 'width': 64}], 'name': "Oliver N'Goma", 'type': 'artist', 'uri': 'spotify:artist:2uxhKBl696bCNHmtO9rnWc'} : Artist missing 'genres'
+2026-04-27 12:37:11,370 - INFO - TEST 2.7: Batch audio features for multiple tracks
+2026-04-27 12:37:11,481 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V with Params: {} returned 403 due to None
+2026-04-27 12:37:11,481 - ERROR - TEST 2.7 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V:
+ None, reason: None
+2026-04-27 12:37:11,538 - INFO - Test run complete: 6/12 passed
+2026-04-27 12:49:05,976 - INFO - TEST 1.1: Checking env credentials
+2026-04-27 12:49:05,977 - INFO - TEST 1.1 PASSED: All credentials present and redirect URI is valid
+2026-04-27 12:49:05,978 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-27 12:49:05,982 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-27 12:49:05,982 - INFO - TEST 1.3 PASSED: Spotify client object created
+2026-04-27 12:49:05,982 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-27 12:49:05,983 - INFO - User authentication requires interaction with your web browser. Once you enter your credentials and give authorization, you will be redirected to a url.  Paste that url you were directed to to complete the authorization.
+2026-04-27 12:49:06,098 - INFO - Opened https://accounts.spotify.com/authorize?client_id=ab572d27ef1e4ca1ac6eb436800df693&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A8888%2Fcallback&scope=user-read-recently-played+user-library-read+user-top-read+playlist-read-private in your browser
+2026-04-27 12:49:08,370 - INFO - TEST 1.4 PASSED: Connected as 'Eric' (id=3173zmpalewv7gxqf4girbovytci)
+2026-04-27 12:49:08,372 - INFO - TEST 1.5: Checking token scopes
+2026-04-27 12:49:08,374 - INFO - TEST 1.5 PASSED: All required scopes granted
+2026-04-27 12:49:08,379 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-27 12:49:08,680 - INFO - TEST 2.1 PASSED: 10 recently played tracks returned
+2026-04-27 12:49:08,684 - INFO - TEST 2.2: Fetching liked songs
+2026-04-27 12:49:08,901 - ERROR - TEST 2.2 FAILED: 'popularity' not found in {'album': {'album_type': 'single', 'artists': [{'external_urls': {'spotify': 'https://open.spotify.com/artist/3k2jR5xGuT2gFcGcU65Ddt'}, 'href': 'https://api.spotify.com/v1/artists/3k2jR5xGuT2gFcGcU65Ddt', 'id': '3k2jR5xGuT2gFcGcU65Ddt', 'name': 'Official Prince Ben', 'type': 'artist', 'uri': 'spotify:artist:3k2jR5xGuT2gFcGcU65Ddt'}], 'external_urls': {'spotify': 'https://open.spotify.com/album/6BdQsmcvQrIp12U2QDUApx'}, 'href': 'https://api.spotify.com/v1/albums/6BdQsmcvQrIp12U2QDUApx', 'id': '6BdQsmcvQrIp12U2QDUApx', 'images': [{'height': 640, 'width': 640, 'url': 'https://i.scdn.co/image/ab67616d0000b273896a5cd7ae0a7de34a8b1e73'}, {'height': 300, 'width': 300, 'url': 'https://i.scdn.co/image/ab67616d00001e02896a5cd7ae0a7de34a8b1e73'}, {'height': 64, 'width': 64, 'url': 'https://i.scdn.co/image/ab67616d00004851896a5cd7ae0a7de34a8b1e73'}], 'is_playable': True, 'name': 'Baba don do wam again', 'release_date': '2026-01-21', 'release_date_precision': 'day', 'total_tracks': 1, 'type': 'album', 'uri': 'spotify:album:6BdQsmcvQrIp12U2QDUApx'}, 'artists': [{'external_urls': {'spotify': 'https://open.spotify.com/artist/3k2jR5xGuT2gFcGcU65Ddt'}, 'href': 'https://api.spotify.com/v1/artists/3k2jR5xGuT2gFcGcU65Ddt', 'id': '3k2jR5xGuT2gFcGcU65Ddt', 'name': 'Official Prince Ben', 'type': 'artist', 'uri': 'spotify:artist:3k2jR5xGuT2gFcGcU65Ddt'}], 'disc_number': 1, 'duration_ms': 204959, 'explicit': False, 'external_ids': {'isrc': 'QZK6H2685975'}, 'external_urls': {'spotify': 'https://open.spotify.com/track/4TzdMjwCG1ruR8skqmFlDJ'}, 'href': 'https://api.spotify.com/v1/tracks/4TzdMjwCG1ruR8skqmFlDJ', 'id': '4TzdMjwCG1ruR8skqmFlDJ', 'is_local': False, 'is_playable': True, 'name': 'Baba don do wam again', 'track_number': 1, 'type': 'track', 'uri': 'spotify:track:4TzdMjwCG1ruR8skqmFlDJ'} : Track missing 'popularity'
+2026-04-27 12:49:08,903 - INFO - TEST 2.3: Fetching top tracks across all time ranges
+2026-04-27 12:49:09,224 - INFO - TEST 2.3 PASSED [short_term]: 10 tracks
+2026-04-27 12:49:09,601 - INFO - TEST 2.3 PASSED [medium_term]: 10 tracks
+2026-04-27 12:49:09,908 - INFO - TEST 2.3 PASSED [long_term]: 10 tracks
+2026-04-27 12:49:10,012 - INFO - TEST 2.4: Fetching audio features
+2026-04-27 12:49:10,123 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b with Params: {} returned 403 due to None
+2026-04-27 12:49:10,123 - ERROR - TEST 2.4 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b:
+ None, reason: None
+2026-04-27 12:49:10,141 - INFO - TEST 2.5: Fetching artist genre tags
+2026-04-27 12:49:10,316 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb with Params: {} returned 403 due to Forbidden
+2026-04-27 12:49:10,316 - ERROR - TEST 2.5 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb:
+ Forbidden, reason: None
+2026-04-27 12:49:10,321 - INFO - TEST 2.6: Fetching user top artists with genres
+2026-04-27 12:49:10,613 - ERROR - TEST 2.6 FAILED: 'genres' not found in {'external_urls': {'spotify': 'https://open.spotify.com/artist/2uxhKBl696bCNHmtO9rnWc'}, 'href': 'https://api.spotify.com/v1/artists/2uxhKBl696bCNHmtO9rnWc', 'id': '2uxhKBl696bCNHmtO9rnWc', 'images': [{'height': 1000, 'url': 'https://i.scdn.co/image/ab6772690000c46ca248bcf9b941ea77136985a6', 'width': 1000}, {'height': 640, 'url': 'https://i.scdn.co/image/ab6772690000dd22a248bcf9b941ea77136985a6', 'width': 640}, {'height': 200, 'url': 'https://i.scdn.co/image/ab6772690000bac3a248bcf9b941ea77136985a6', 'width': 200}, {'height': 64, 'url': 'https://i.scdn.co/image/ab67726900008f74a248bcf9b941ea77136985a6', 'width': 64}], 'name': "Oliver N'Goma", 'type': 'artist', 'uri': 'spotify:artist:2uxhKBl696bCNHmtO9rnWc'} : Artist missing 'genres'
+2026-04-27 12:49:10,616 - INFO - TEST 2.7: Batch audio features for multiple tracks
+2026-04-27 12:49:10,827 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V with Params: {} returned 403 due to None
+2026-04-27 12:49:10,828 - ERROR - TEST 2.7 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V:
+ None, reason: None
+2026-04-27 12:49:10,845 - INFO - Test run complete: 6/12 passed
+2026-04-27 12:54:44,207 - INFO - TEST 1.1: Checking env credentials
+2026-04-27 12:54:44,208 - INFO - TEST 1.1 PASSED: All credentials present and redirect URI is valid
+2026-04-27 12:54:44,213 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-27 12:54:44,216 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-27 12:54:44,217 - INFO - TEST 1.3 PASSED: Spotify client object created
+2026-04-27 12:54:44,217 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-27 12:54:45,163 - INFO - TEST 1.4 PASSED: Connected as 'Eric' (id=3173zmpalewv7gxqf4girbovytci)
+2026-04-27 12:54:45,169 - INFO - TEST 1.5: Checking token scopes
+2026-04-27 12:54:45,170 - INFO - TEST 1.5 PASSED: All required scopes granted
+2026-04-27 12:54:45,192 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-27 12:54:45,883 - INFO - TEST 2.1 PASSED: 10 recently played tracks returned
+2026-04-27 12:54:45,885 - INFO - TEST 2.2: Fetching liked songs
+2026-04-27 12:54:46,174 - ERROR - TEST 2.2 FAILED: 'popularity' not found in {'album': {'album_type': 'single', 'artists': [{'external_urls': {'spotify': 'https://open.spotify.com/artist/0HvBFWIHIgAny0jrp9mbVy'}, 'href': 'https://api.spotify.com/v1/artists/0HvBFWIHIgAny0jrp9mbVy', 'id': '0HvBFWIHIgAny0jrp9mbVy', 'name': 'Gradine Toto', 'type': 'artist', 'uri': 'spotify:artist:0HvBFWIHIgAny0jrp9mbVy'}], 'external_urls': {'spotify': 'https://open.spotify.com/album/2Tg80DVBeQKx7kmp6g2qSP'}, 'href': 'https://api.spotify.com/v1/albums/2Tg80DVBeQKx7kmp6g2qSP', 'id': '2Tg80DVBeQKx7kmp6g2qSP', 'images': [{'height': 640, 'width': 640, 'url': 'https://i.scdn.co/image/ab67616d0000b273dcc63d033166dd6ef6a16a88'}, {'height': 300, 'width': 300, 'url': 'https://i.scdn.co/image/ab67616d00001e02dcc63d033166dd6ef6a16a88'}, {'height': 64, 'width': 64, 'url': 'https://i.scdn.co/image/ab67616d00004851dcc63d033166dd6ef6a16a88'}], 'is_playable': True, 'name': 'MAYDAY RACHAEL', 'release_date': '2026-02-13', 'release_date_precision': 'day', 'total_tracks': 1, 'type': 'album', 'uri': 'spotify:album:2Tg80DVBeQKx7kmp6g2qSP'}, 'artists': [{'external_urls': {'spotify': 'https://open.spotify.com/artist/0HvBFWIHIgAny0jrp9mbVy'}, 'href': 'https://api.spotify.com/v1/artists/0HvBFWIHIgAny0jrp9mbVy', 'id': '0HvBFWIHIgAny0jrp9mbVy', 'name': 'Gradine Toto', 'type': 'artist', 'uri': 'spotify:artist:0HvBFWIHIgAny0jrp9mbVy'}], 'disc_number': 1, 'duration_ms': 409597, 'explicit': False, 'external_ids': {'isrc': 'QZPYN2607172'}, 'external_urls': {'spotify': 'https://open.spotify.com/track/3ORvFHgfasdR92GGp6rVQF'}, 'href': 'https://api.spotify.com/v1/tracks/3ORvFHgfasdR92GGp6rVQF', 'id': '3ORvFHgfasdR92GGp6rVQF', 'is_local': False, 'is_playable': True, 'name': 'MAYDAY RACHAEL', 'track_number': 1, 'type': 'track', 'uri': 'spotify:track:3ORvFHgfasdR92GGp6rVQF'} : Track missing 'popularity'
+2026-04-27 12:54:46,177 - INFO - TEST 2.3: Fetching top tracks across all time ranges
+2026-04-27 12:54:46,495 - INFO - TEST 2.3 PASSED [short_term]: 10 tracks
+2026-04-27 12:54:46,804 - INFO - TEST 2.3 PASSED [medium_term]: 10 tracks
+2026-04-27 12:54:47,462 - INFO - TEST 2.3 PASSED [long_term]: 10 tracks
+2026-04-27 12:54:47,564 - INFO - TEST 2.4: Fetching audio features
+2026-04-27 12:54:47,723 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b with Params: {} returned 403 due to None
+2026-04-27 12:54:47,724 - ERROR - TEST 2.4 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b:
+ None, reason: None
+2026-04-27 12:54:47,768 - INFO - TEST 2.5: Fetching artist genre tags
+2026-04-27 12:54:47,934 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb with Params: {} returned 403 due to Forbidden
+2026-04-27 12:54:47,935 - ERROR - TEST 2.5 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb:
+ Forbidden, reason: None
+2026-04-27 12:54:47,937 - INFO - TEST 2.6: Fetching user top artists with genres
+2026-04-27 12:54:48,353 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/artists/?ids=2uxhKBl696bCNHmtO9rnWc,1nWa5jIJNb1QCG9jfgAWQm,5UZlvWGHq0ALdC2dj7Ha67,1ukmGETCwXTbgrTrkRDnmn,2keT7cqT2gNfx3dYRKxvA1 with Params: {} returned 403 due to Forbidden
+2026-04-27 12:54:48,353 - ERROR - TEST 2.6 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/artists/?ids=2uxhKBl696bCNHmtO9rnWc,1nWa5jIJNb1QCG9jfgAWQm,5UZlvWGHq0ALdC2dj7Ha67,1ukmGETCwXTbgrTrkRDnmn,2keT7cqT2gNfx3dYRKxvA1:
+ Forbidden, reason: None
+2026-04-27 12:54:48,358 - INFO - TEST 2.7: Batch audio features for multiple tracks
+2026-04-27 12:54:48,433 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V with Params: {} returned 403 due to None
+2026-04-27 12:54:48,433 - ERROR - TEST 2.7 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V:
+ None, reason: None
+2026-04-27 12:54:48,454 - INFO - Test run complete: 6/12 passed
+2026-04-27 12:56:57,212 - INFO - TEST 1.1: Checking env credentials
+2026-04-27 12:56:57,213 - INFO - TEST 1.1 PASSED: All credentials present and redirect URI is valid
+2026-04-27 12:56:57,214 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-27 12:56:57,214 - INFO - TEST 1.2 PASSED: spotipy version unknown found
+2026-04-27 12:56:57,215 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-27 12:56:57,215 - INFO - TEST 1.3 PASSED: Spotify client object created
+2026-04-27 12:56:57,217 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-27 12:56:57,218 - INFO - User authentication requires interaction with your web browser. Once you enter your credentials and give authorization, you will be redirected to a url.  Paste that url you were directed to to complete the authorization.
+2026-04-27 12:56:57,467 - INFO - Opened https://accounts.spotify.com/authorize?client_id=ab572d27ef1e4ca1ac6eb436800df693&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A8888%2Fcallback&scope=user-read-recently-played+user-library-read+user-top-read+playlist-read-private in your browser
+2026-04-27 12:56:59,616 - INFO - TEST 1.4 PASSED: Connected as 'Eric' (id=3173zmpalewv7gxqf4girbovytci)
+2026-04-27 12:56:59,617 - INFO - TEST 1.5: Checking token scopes
+2026-04-27 12:56:59,618 - INFO - TEST 1.5 PASSED: All required scopes granted
+2026-04-27 12:56:59,621 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-27 12:56:59,825 - INFO - TEST 2.1 PASSED: 10 recently played tracks returned
+2026-04-27 12:56:59,837 - INFO - TEST 2.2: Fetching liked songs
+2026-04-27 12:57:00,334 - INFO - TEST 2.2 PASSED: 8 liked songs returned
+2026-04-27 12:57:00,338 - INFO - TEST 2.3: Fetching top tracks across all time ranges
+2026-04-27 12:57:00,741 - INFO - TEST 2.3 PASSED [short_term]: 10 tracks
+2026-04-27 12:57:01,150 - INFO - TEST 2.3 PASSED [medium_term]: 10 tracks
+2026-04-27 12:57:01,559 - INFO - TEST 2.3 PASSED [long_term]: 10 tracks
+2026-04-27 12:57:01,662 - INFO - TEST 2.4: Fetching audio features
+2026-04-27 12:57:01,818 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b with Params: {} returned 403 due to None
+2026-04-27 12:57:01,819 - ERROR - TEST 2.4 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b:
+ None, reason: None
+2026-04-27 12:57:01,827 - INFO - TEST 2.5: Fetching artist genre tags
+2026-04-27 12:57:01,968 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb with Params: {} returned 403 due to Forbidden
+2026-04-27 12:57:01,969 - ERROR - TEST 2.5 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb:
+ Forbidden, reason: None
+2026-04-27 12:57:01,972 - INFO - TEST 2.6: Fetching user top artists with genres
+2026-04-27 12:57:02,254 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/artists/?ids=2uxhKBl696bCNHmtO9rnWc,1nWa5jIJNb1QCG9jfgAWQm,5UZlvWGHq0ALdC2dj7Ha67,1ukmGETCwXTbgrTrkRDnmn,2keT7cqT2gNfx3dYRKxvA1 with Params: {} returned 403 due to Forbidden
+2026-04-27 12:57:02,255 - ERROR - TEST 2.6 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/artists/?ids=2uxhKBl696bCNHmtO9rnWc,1nWa5jIJNb1QCG9jfgAWQm,5UZlvWGHq0ALdC2dj7Ha67,1ukmGETCwXTbgrTrkRDnmn,2keT7cqT2gNfx3dYRKxvA1:
+ Forbidden, reason: None
+2026-04-27 12:57:02,259 - INFO - TEST 2.7: Batch audio features for multiple tracks
+2026-04-27 12:57:02,379 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V with Params: {} returned 403 due to None
+2026-04-27 12:57:02,396 - ERROR - TEST 2.7 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V:
+ None, reason: None
+2026-04-27 12:57:02,449 - INFO - Test run complete: 8/12 passed
+2026-04-27 13:05:37,078 - ERROR - Failed to build Spotify client: 'SpotifyOAuth' object has no attribute 'request_access_token'
+2026-04-27 13:05:37,081 - INFO - TEST 1.1: Checking env credentials
+2026-04-27 13:05:37,081 - INFO - TEST 1.1 PASSED: All credentials present and redirect URI is valid
+2026-04-27 13:05:37,082 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-27 13:05:37,082 - INFO - TEST 1.2 PASSED: spotipy version unknown found
+2026-04-27 13:05:37,083 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-27 13:05:37,093 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-27 13:05:37,096 - INFO - TEST 1.5: Checking token scopes
+2026-04-27 13:05:37,115 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-27 13:05:37,117 - INFO - TEST 2.2: Fetching liked songs
+2026-04-27 13:05:37,126 - INFO - TEST 2.3: Fetching top tracks across all time ranges
+2026-04-27 13:05:37,131 - INFO - TEST 2.4: Fetching audio features
+2026-04-27 13:05:37,133 - INFO - TEST 2.5: Fetching artist genre tags
+2026-04-27 13:05:37,141 - INFO - TEST 2.6: Fetching user top artists with genres
+2026-04-27 13:05:37,142 - INFO - TEST 2.7: Batch audio features for multiple tracks
+2026-04-27 13:05:37,163 - INFO - Test run complete: 2/12 passed
+2026-04-27 13:09:46,017 - ERROR - Failed to build Spotify client: 'SpotifyOAuth' object has no attribute 'request_access_token'
+2026-04-27 13:09:46,020 - INFO - TEST 1.1: Checking env credentials
+2026-04-27 13:09:46,020 - INFO - TEST 1.1 PASSED: All credentials present and redirect URI is valid
+2026-04-27 13:09:46,020 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-27 13:09:46,020 - INFO - TEST 1.2 PASSED: spotipy version unknown found
+2026-04-27 13:09:46,021 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-27 13:09:46,023 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-27 13:09:46,026 - INFO - TEST 1.5: Checking token scopes
+2026-04-27 13:09:46,042 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-27 13:09:46,045 - INFO - TEST 2.2: Fetching liked songs
+2026-04-27 13:09:46,050 - INFO - TEST 2.3: Fetching top tracks across all time ranges
+2026-04-27 13:09:46,051 - INFO - TEST 2.4: Fetching audio features
+2026-04-27 13:09:46,057 - INFO - TEST 2.5: Fetching artist genre tags
+2026-04-27 13:09:46,059 - INFO - TEST 2.6: Fetching user top artists with genres
+2026-04-27 13:09:46,060 - INFO - TEST 2.7: Batch audio features for multiple tracks
+2026-04-27 13:09:46,118 - INFO - Test run complete: 2/12 passed
+2026-04-27 13:11:53,690 - INFO - TEST 1.1: Checking env credentials
+2026-04-27 13:11:53,691 - INFO - TEST 1.1 PASSED: All credentials present and redirect URI is valid
+2026-04-27 13:11:53,692 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-27 13:11:53,692 - INFO - TEST 1.2 PASSED: spotipy version unknown found
+2026-04-27 13:11:53,693 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-27 13:11:53,693 - INFO - TEST 1.3 PASSED: Spotify client object created
+2026-04-27 13:11:53,696 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-27 13:11:54,690 - INFO - TEST 1.4 PASSED: Connected as 'Eric' (id=3173zmpalewv7gxqf4girbovytci)
+2026-04-27 13:11:54,693 - INFO - TEST 1.5: Checking token scopes
+2026-04-27 13:11:54,694 - INFO - TEST 1.5 PASSED: All required scopes granted
+2026-04-27 13:11:54,696 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-27 13:11:54,919 - INFO - TEST 2.1 PASSED: 10 recently played tracks returned
+2026-04-27 13:11:54,925 - INFO - TEST 2.2: Fetching liked songs
+2026-04-27 13:11:55,201 - INFO - TEST 2.2 PASSED: 8 liked songs returned
+2026-04-27 13:11:55,203 - INFO - TEST 2.3: Fetching top tracks across all time ranges
+2026-04-27 13:11:55,512 - INFO - TEST 2.3 PASSED [short_term]: 10 tracks
+2026-04-27 13:11:55,919 - INFO - TEST 2.3 PASSED [medium_term]: 10 tracks
+2026-04-27 13:11:56,234 - INFO - TEST 2.3 PASSED [long_term]: 10 tracks
+2026-04-27 13:11:56,337 - INFO - TEST 2.4: Fetching audio features
+2026-04-27 13:11:56,429 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b with Params: {} returned 403 due to None
+2026-04-27 13:11:56,430 - ERROR - TEST 2.4 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b:
+ None, reason: None
+2026-04-27 13:11:56,434 - INFO - TEST 2.5: Fetching artist genre tags
+2026-04-27 13:11:56,635 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb with Params: {} returned 403 due to Forbidden
+2026-04-27 13:11:56,635 - ERROR - TEST 2.5 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/artists/?ids=4Z8W4fKeB5YxbusRsdQVPb:
+ Forbidden, reason: None
+2026-04-27 13:11:56,638 - INFO - TEST 2.6: Fetching user top artists with genres
+2026-04-27 13:11:57,147 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/artists/?ids=2uxhKBl696bCNHmtO9rnWc,1nWa5jIJNb1QCG9jfgAWQm,5UZlvWGHq0ALdC2dj7Ha67,1ukmGETCwXTbgrTrkRDnmn,2keT7cqT2gNfx3dYRKxvA1 with Params: {} returned 403 due to Forbidden
+2026-04-27 13:11:57,148 - ERROR - TEST 2.6 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/artists/?ids=2uxhKBl696bCNHmtO9rnWc,1nWa5jIJNb1QCG9jfgAWQm,5UZlvWGHq0ALdC2dj7Ha67,1ukmGETCwXTbgrTrkRDnmn,2keT7cqT2gNfx3dYRKxvA1:
+ Forbidden, reason: None
+2026-04-27 13:11:57,151 - INFO - TEST 2.7: Batch audio features for multiple tracks
+2026-04-27 13:11:57,352 - ERROR - HTTP Error for GET to https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V with Params: {} returned 403 due to None
+2026-04-27 13:11:57,352 - ERROR - TEST 2.7 FAILED: http status: 403, code: -1 - https://api.spotify.com/v1/audio-features/?ids=0VjIjW4GlUZAMYd2vXMi3b,7qiZfU4dY1lWllzX7mPBI3,3n3Ppam7vgaVa1iaRUIOKE,1dGr1c8CrMLDpV6mPbImSI,2TpxZ7JUBn3uw46aR7qd6V:
+ None, reason: None
+2026-04-27 13:11:57,464 - INFO - Test run complete: 8/12 passed
+2026-04-27 23:27:04,834 - ERROR - Failed to build Spotify client: EOF when reading a line
+2026-04-27 23:27:04,835 - INFO - TEST 1.1: Checking env credentials
+2026-04-27 23:27:04,835 - INFO - TEST 1.1 PASSED
+2026-04-27 23:27:04,836 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-27 23:27:04,836 - INFO - TEST 1.2 PASSED: spotipy unknown
+2026-04-27 23:27:04,836 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-27 23:27:04,839 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-27 23:27:04,840 - INFO - TEST 1.5: Checking token scopes
+2026-04-27 23:27:04,840 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-27 23:27:04,841 - INFO - TEST 2.2: Fetching liked songs
+2026-04-27 23:27:04,841 - INFO - TEST 2.3: Fetching top tracks across time ranges
+2026-04-27 23:27:04,841 - INFO - TEST 2.4: Fetching artist genre tags via individual call
+2026-04-27 23:27:04,841 - INFO - TEST 2.5: Fetching top artist genre tags via individual calls
+2026-04-27 23:27:04,842 - INFO - Test run complete: 2/10 passed
+2026-04-27 23:31:39,525 - INFO - TEST 1.1: Checking env credentials
+2026-04-27 23:31:39,525 - INFO - TEST 1.1 PASSED
+2026-04-27 23:31:39,526 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-27 23:31:39,527 - INFO - TEST 1.2 PASSED: spotipy unknown
+2026-04-27 23:31:39,528 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-27 23:31:39,528 - INFO - TEST 1.3 PASSED
+2026-04-27 23:31:39,530 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-27 23:31:39,926 - INFO - TEST 1.4 PASSED: connected as Eric
+2026-04-27 23:31:39,927 - INFO - TEST 1.5: Checking token scopes
+2026-04-27 23:31:39,927 - INFO - TEST 1.5 PASSED: all required scopes granted
+2026-04-27 23:31:39,929 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-27 23:31:40,099 - INFO - TEST 2.1 PASSED: 10 recently played tracks
+2026-04-27 23:31:40,100 - INFO - TEST 2.2: Fetching liked songs
+2026-04-27 23:31:40,336 - INFO - TEST 2.2 PASSED: 10 liked songs
+2026-04-27 23:31:40,339 - INFO - TEST 2.3: Fetching top tracks across time ranges
+2026-04-27 23:31:40,640 - INFO - TEST 2.3 PASSED [short_term]: 10 tracks
+2026-04-27 23:31:41,052 - INFO - TEST 2.3 PASSED [medium_term]: 10 tracks
+2026-04-27 23:31:41,361 - INFO - TEST 2.3 PASSED [long_term]: 10 tracks
+2026-04-27 23:31:41,462 - INFO - TEST 2.4: Fetching artist genre tags via individual call
+2026-04-27 23:31:41,572 - ERROR - TEST 2.4 FAILED: 'genres' not found in {'external_urls': {'spotify': 'https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb'}, 'href': 'https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb', 'id': '4Z8W4fKeB5YxbusRsdQVPb', 'images': [{'url': 'https://i.scdn.co/image/ab6761610000e5eb4104fbd80f1f795728abbd59', 'height': 640, 'width': 640}, {'url': 'https://i.scdn.co/image/ab676161000051744104fbd80f1f795728abbd59', 'height': 320, 'width': 320}, {'url': 'https://i.scdn.co/image/ab6761610000f1784104fbd80f1f795728abbd59', 'height': 160, 'width': 160}], 'name': 'Radiohead', 'type': 'artist', 'uri': 'spotify:artist:4Z8W4fKeB5YxbusRsdQVPb'} : Artist missing 'genres'
+2026-04-27 23:31:41,581 - INFO - TEST 2.5: Fetching top artist genre tags via individual calls
+2026-04-27 23:31:41,931 - ERROR - TEST 2.5 FAILED: 'genres' not found in {'external_urls': {'spotify': 'https://open.spotify.com/artist/2uxhKBl696bCNHmtO9rnWc'}, 'href': 'https://api.spotify.com/v1/artists/2uxhKBl696bCNHmtO9rnWc', 'id': '2uxhKBl696bCNHmtO9rnWc', 'images': [{'url': 'https://i.scdn.co/image/ab6772690000c46ca248bcf9b941ea77136985a6', 'height': 1000, 'width': 1000}, {'url': 'https://i.scdn.co/image/ab6772690000dd22a248bcf9b941ea77136985a6', 'height': 640, 'width': 640}, {'url': 'https://i.scdn.co/image/ab6772690000bac3a248bcf9b941ea77136985a6', 'height': 200, 'width': 200}, {'url': 'https://i.scdn.co/image/ab67726900008f74a248bcf9b941ea77136985a6', 'height': 64, 'width': 64}], 'name': "Oliver N'Goma", 'type': 'artist', 'uri': 'spotify:artist:2uxhKBl696bCNHmtO9rnWc'} : Artist missing 'genres'
+2026-04-27 23:31:41,936 - INFO - Test run complete: 8/10 passed
+2026-04-28 11:51:23,834 - INFO - TEST 1.1: Checking env credentials
+2026-04-28 11:51:23,836 - INFO - TEST 1.1 PASSED
+2026-04-28 11:51:23,837 - INFO - TEST 1.2: Checking spotipy is installed
+2026-04-28 11:51:23,837 - INFO - TEST 1.2 PASSED: spotipy unknown
+2026-04-28 11:51:23,837 - INFO - TEST 1.3: Checking Spotify client built successfully
+2026-04-28 11:51:23,837 - INFO - TEST 1.3 PASSED
+2026-04-28 11:51:23,837 - INFO - TEST 1.4: Calling /me endpoint
+2026-04-28 11:51:24,981 - INFO - TEST 1.4 PASSED: connected as Eric
+2026-04-28 11:51:24,982 - INFO - TEST 1.5: Checking token scopes
+2026-04-28 11:51:24,983 - INFO - TEST 1.5 PASSED: all required scopes granted
+2026-04-28 11:51:24,983 - INFO - TEST 2.1: Fetching recently played tracks
+2026-04-28 11:51:25,349 - INFO - TEST 2.1 PASSED: 10 recently played tracks
+2026-04-28 11:51:25,349 - INFO - TEST 2.2: Fetching liked songs
+2026-04-28 11:51:25,933 - INFO - TEST 2.2 PASSED: 10 liked songs
+2026-04-28 11:51:25,963 - INFO - TEST 2.3: Fetching top tracks across time ranges
+2026-04-28 11:51:26,342 - INFO - TEST 2.3 PASSED [short_term]: 10 tracks
+2026-04-28 11:51:26,751 - INFO - TEST 2.3 PASSED [medium_term]: 10 tracks
+2026-04-28 11:51:27,161 - INFO - TEST 2.3 PASSED [long_term]: 10 tracks
+2026-04-28 11:51:27,262 - INFO - Test run complete: 8/8 passed
