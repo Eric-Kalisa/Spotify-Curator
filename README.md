@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Spotify Curator** is an agentic ML pipeline that learns the shape of your personal music taste from your Spotify listening history and automatically discovers new tracks you are likely to enjoy — without you having to search for them.
+**Spotify Curator** is an agentic ML pipeline that learns from your music taste on your Spotify listening history, forms playlists and automatically discovers new tracks you are likely to enjoy — without you having to search for them.
 
 The system clusters your listening history into natural "vibe buckets" using unsupervised learning, builds a mathematical profile of each cluster, then uses those profiles to score and vet candidate tracks before writing them into a Spotify playlist.
 
@@ -23,7 +23,7 @@ The system clusters your listening history into natural "vibe buckets" using uns
    played,             │  (ingest.py)     │        + audio features
    liked,              └──────────────────┘        + genres
    top tracks)                │
-                              │  missing audio features?
+                              │  missing audio features/genres?
                               ▼
                     ┌──────────────────────┐
                     │  LLM FEATURE         │  ◄──  Amazon Nova Lite
@@ -100,7 +100,7 @@ The system clusters your listening history into natural "vibe buckets" using uns
 **Where humans are involved:**
 - The `main.py` demo runner lets you inspect every stage's output in the terminal before anything is written to Spotify.
 - The guardrail stage surfaces LLM approve/reject verdicts with reasons, which can be reviewed before the playlist writer runs.
-- Unit tests encode human-defined invariants (e.g. `AUDIO_FEATURE_COLS` in scorer must exactly match `build_feature_matrix` columns) that catch silent regressions automatically.
+- Unit tests encode human-defined invariants (e.g. `AUDIO_FEATURE_COLS` in scorer must exactly match `build_feature_matrix` columns) that catch silent regressions automatically; or data writing tests to catch when data is out of bounds,empty or unexpected value.
 
 ---
 
@@ -152,10 +152,10 @@ AWS_DEFAULT_REGION=us-east-1
 # Full run — fetches live Spotify data
 python src/main.py
 
-# Skip API calls, reuse cached data
+# Skip API calls, reuse cached data, after first run of main.py has collected songs and run llm estimations
 python src/main.py --skip-ingest
 
-# Skip the Bedrock guardrail call too
+# Skip the Bedrock guardrail call too if desired if not done training data
 python src/main.py --skip-ingest --skip-guardrail
 ```
 
@@ -203,11 +203,12 @@ After ingesting 126 tracks the segmenter found 4 natural vibe clusters:
 
 The system correctly grouped a stand-up comedy cluster — it identified the genre pattern without any manual labeling.
 
+
 ---
 
 ### Example 2 — LLM Audio Feature Estimation
 
-For tracks where Spotify's `audio_features` endpoint is unavailable (deprecated Nov 2024), Amazon Nova Lite estimates the features:
+For tracks where Spotify's `audio_features` endpoint is unavailable (deprecated Nov 2024-- required business acc for access), Amazon Nova Lite estimates the features:
 
 **Input:** `"Miracle" by Rachel Anyeme`
 
@@ -275,37 +276,37 @@ Not all listening events are equal signals. A liked song is a deliberate, durabl
 
 ---
 
-## Testing Summary
-
-**Test file:** `tests/training_tests.py` — 28 tests, 5 suites, 0 skipped.
-
-| Suite | What it tests | Result |
-|---|---|---|
-| 1 — Feature Engineering | Column contracts, `time_sig_norm` range [0,1], scorer↔features alignment | ✓ All pass |
-| 2 — Scorer | Cosine math, vector length vs centroid dimension, confidence range | ✓ All pass |
-| 3 — Segmenter | UMAP output shape, HDBSCAN label types, noise handling | ✓ All pass |
-| 4 — Taste Model | Centroid weighting, profile count matches clusters, sorting | ✓ All pass |
-| 5 — Guardrail Parser | JSON verdict parsing, fallback on malformed LLM output, prompt contents | ✓ All pass |
-
 **What worked well:**
-- Test `1_6_scorer_column_alignment` enforces that `AUDIO_FEATURE_COLS` in `scorer.py` exactly mirrors `build_feature_matrix` columns in `features.py`. This caught a real bug: `time_sig_norm` was missing from the scorer, which would have silently produced dimension-mismatched vectors at runtime.
-- Guardrail parser tests caught that `json.loads` fails on Python-repr strings (single-quoted lists) produced by pandas CSV round-trips — fixed by switching to `ast.literal_eval`.
+
+- Spotify API correctly fetched the data as instructed. 
+- LLM calls run smoothly both at features prediction before training and at grounding calls 
+- UMAP dimension reductionality and noise reduction; assessing the clustering performance given that I used my own Spotify profile, I found that performance was decent
 
 **What didn't work / required fixes:**
-- `hdbscan` package fails to install on Python 3.12+ without C++ Build Tools. Migrated to `sklearn.cluster.HDBSCAN`.
-- `time_signature` was silently dropped from the feature matrix for several pipeline stages. Traced and fixed through 4 files: `features.py`, `scorer.py`, `discoverer.py`, and `agent.py`.
-- Windows `cp1252` encoding could not render Unicode block characters in `main.py`. Fixed with `sys.stdout.reconfigure(encoding="utf-8")`.
+
+- discoverer is not fed good data. It almost uses none of the audio features collected with the LLM estimator to find new tracks since deezer radio is not audio feature enriched. The song finds are poorly related to the current clusters, a huge chunk does not pass the cosine similarity threshold and none pass the guardrail test 
 
 **What I learned:**
-- Silent dimension mismatches (e.g. `X` is 20-wide but centroid is 19-wide) don't throw immediately — they propagate and surface as wrong scores or wrong cluster assignments. Column-alignment tests are essential.
-- Pandas CSV round-trips silently change list columns from JSON (`["a","b"]`) to Python repr (`['a', 'b']`), which breaks `json.loads`. Always use `ast.literal_eval` when reading back list columns from CSV.
 
----
+- Industry level production requires extensive planning. If this was an app to be pushed to production, here are the considerations I'd think through: budget needs(token usage on LLM calls), threading process to cut wait times (considering Semaphore for Spotify API call paralled with LLM audio estimation), request API access, call 2-3 other models on a small dataset to test performance, a deliberate design pattern to protect src code from corruption and client data
+
+- step-by-step, well thought out tests were implemented and were helpful to track what worked before moving on to next steps. This saved time and avoided frustration.
+
 
 ## Reflection
 
-Building Spotify Curator taught me that **AI systems fail silently more than they fail loudly**. A missing feature column doesn't crash the pipeline — it just makes every score slightly wrong in a way that's hard to notice without a test that explicitly checks the contract between two modules.
+Building Spotify Curator taught me that AI systems fail silently more than they fail loudly. A missing feature column doesn't crash the pipeline — it just makes every score slightly wrong in a way that's hard to notice without a test that explicitly checks the contract between two modules.
 
 The most important design insight was treating the LLM as a *last-mile critic* rather than a primary decision-maker. Cosine similarity over learned centroids does the heavy lifting cheaply and deterministically. The LLM's role is to catch the edge cases that math can't — contextual mismatches, metadata quirks, the difference between a studio recording and its live version. This division keeps costs controlled while still leveraging what LLMs are genuinely good at: reading context.
 
 The project also illustrated the gap between "model works on toy data" and "pipeline works end-to-end." Every stage interface (what columns exist, what shapes arrays have, what encoding list-typed fields use across serialization boundaries) is a potential failure point. Writing tests that encode those interface contracts — not just unit behavior — is what makes a multi-stage AI pipeline actually maintainable.
+
+On the same point, building a one user E2E program showed me the need for access. There are are many things I had to tradeoff because I had no access. For example: the intent was to use Spotify's artist and audio metadata for training but due to policy I had no access. I also intended to try categorically different models for training and testing but most required form submission and approval processing times. System design, planning is necessary for successful execution. 
+
+
+# Future Improvements
+
+1. Gaining access to Spotify API on audio and artist metadata to enrich dataset if possible
+2. Fill out Anthropic use form to use claude's models
+3. Deploy an agent that forms playlists and routinely adds music based on new realeases and user behavior (reinforcement learning)
+4. Capture data that can help to improve model performance, for example incentivize when the user adds an agent added song to liked songs

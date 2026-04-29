@@ -24,11 +24,19 @@ deactivate
 ```bash
 venv\Scripts\activate.bat
 python tests/api_tests.py -v
+python tests/AWS_API_tests.py -v
+python tests/ingest_tests.py -v
+python tests/training_tests.py -v
+
+
 ```
 
 **Option 2: Direct venv Python (no activation needed)**
 ```bash
 venv\Scripts\python.exe tests/api_tests.py -v
+venv\Scripts\python.exe tests/AWS_API_tests.py -v
+venv\Scripts\python.exe tests/ingest_tests.py -v
+venv\Scripts\python.exe tests/training_tests.py -v
 ```
 
 ### Installed Packages
@@ -65,6 +73,7 @@ Spotify-Curator/
 │   └── ingest.py                  # Data ingestion
 └── tests/
     └── api_tests.py               # Integration tests
+
 ```
 
 ### Updating Dependencies
