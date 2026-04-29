@@ -82,6 +82,11 @@ def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
     # encode as a single harmonic signature (0-1)
     df["harmonic_sig"] = (df["key"].fillna(0) / 11) * df["mode"].fillna(0.5)
 
+    # ── Normalize time signature ─────────────────────────────
+    # Spotify's time_signature ranges from 3 to 7 (3/4 to 7/4)
+    df["time_sig_norm"] = (df["time_signature"].fillna(4) - 3) / (7 - 3)
+    df["time_sig_norm"] = df["time_sig_norm"].clip(0, 1)
+
     # ── fill remaining nulls ─────────────────────────────────
     fill_defaults = {
         "speechiness": 0.0,
@@ -125,7 +130,7 @@ def build_feature_matrix(df: pd.DataFrame, genre_cols: list) -> np.ndarray:
     audio_features = [
         "energy", "valence", "danceability", "acousticness",
         "tempo_norm", "loudness_norm", "speechiness",
-        "instrumentalness", "liveness",
+        "instrumentalness", "liveness", "time_sig_norm",
     ]
 
     # engineered features
