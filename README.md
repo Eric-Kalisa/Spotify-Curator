@@ -1,4 +1,5 @@
 # Spotify Curator
+This is an extension of the music recommender system that was fed a list of songs and used weighted averages (pre-defined weights) to rank songs for a specific user profile. This extension reimagines training and curation. 
 
 ## Summary
 
@@ -285,6 +286,8 @@ Not all listening events are equal signals. A liked song is a deliberate, durabl
 **What didn't work / required fixes:**
 
 - discoverer is not fed good data. It almost uses none of the audio features collected with the LLM estimator to find new tracks since deezer radio is not audio feature enriched. The song finds are poorly related to the current clusters, a huge chunk does not pass the cosine similarity threshold and none pass the guardrail test 
+- the dataset from one user profile was too small to implement some other training apporoaches such as the use of neural nets that require more data points for efficiency. 
+
 
 **What I learned:**
 
@@ -310,3 +313,7 @@ On the same point, building a one user E2E program showed me the need for access
 2. Fill out Anthropic use form to use claude's models
 3. Deploy an agent that forms playlists and routinely adds music based on new realeases and user behavior (reinforcement learning)
 4. Capture data that can help to improve model performance, for example incentivize when the user adds an agent added song to liked songs
+
+# Video_Walkthrough
+
+https://www.loom.com/share/75e0494d5bdc46ad8d8a1918e22a65c9
